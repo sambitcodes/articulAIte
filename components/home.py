@@ -165,7 +165,7 @@ def home_page():
     col1, col2 = st.columns(2)
     
     with col1:
-        st.image(r"images\resume.png" ,use_container_width=True)
+        st.image(r"images/resume.png" ,use_container_width=True)
         st.markdown("""
         <div class="feature-card">
             <p class="feature-desc">
@@ -176,7 +176,7 @@ def home_page():
         
         st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
         
-        st.image(r"images\article.png", use_container_width=True)
+        st.image(r"images/article.png", use_container_width=True)
         st.markdown("""
         <div class="feature-card">
             <p class="feature-desc">
@@ -186,7 +186,7 @@ def home_page():
         """, unsafe_allow_html=True)
     
     with col2:
-        st.image(r"images\code.png", use_container_width=True)
+        st.image(r"images/code.png", use_container_width=True)
         st.markdown("""
         <div class="feature-card">
             <p class="feature-desc">
@@ -197,7 +197,7 @@ def home_page():
         
         st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
         
-        st.image(r"images\study.png", use_container_width=True)
+        st.image(r"images/study.png", use_container_width=True)
         st.markdown("""
         <div class="feature-card">
             <p class="feature-desc">
