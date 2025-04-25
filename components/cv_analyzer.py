@@ -85,7 +85,7 @@ def display_chat_messages():
 def cv_assistant():
     """Main CV analyzer and interview preparation assistant"""
     with st.expander("About", expanded=False):
-        st.header("CV Analysis & Interview Preparation")
+        st.header("CV Analysis & Interview Preparation 📑📝💼📞")
         st.markdown("""
         Upload your CV/resume and optionally a job description to get:
         - :red[Profile analysis]

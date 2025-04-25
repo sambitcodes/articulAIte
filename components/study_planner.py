@@ -4,12 +4,12 @@ from langchain.prompts import ChatPromptTemplate
 from langchain.chains import LLMChain
 from config import GROQ_API_KEY, STUDY_MODEL, STUDY_TEMP, DEFAULT_SOURCE_ATTRIBUTION
 
-def generate_study_plan(subject, duration_weeks, experience_level, goals):
+def generate_study_plan(subject,model, duration_weeks, experience_level, goals):
     """Generate a study plan using Groq"""
     try:
         llm = ChatGroq(
             api_key=GROQ_API_KEY,
-            model_name=STUDY_MODEL,
+            model_name=model,
             temperature=STUDY_TEMP,
         )
         
@@ -62,39 +62,43 @@ def display_chat_messages():
 def study_assistant():
     """Main study plan generation assistant"""
     with st.expander("About", expanded=False):
-        st.header("Study Plan Generator")
+        st.header("Study Plan Generator 📅")
         st.markdown("""
         Create personalized study plans for any subject:
-        - Week-by-week learning schedules
-        - Recommended resources and materials
-        - Time estimates and progress tracking
-        - Customized for your experience level and goals
+        - :red[Week-by-week learning schedules]
+        - :red[Recommended resources and materials]
+        - :red[Time estimates and progress tracking]
+        - :red[Customized for your experience level and goals]
         """)
     
     # Subject input
     subject = st.text_input("Enter subject or skill to learn", help="Be specific for a more targeted plan")
+
+    left_col, right_col = st.columns(2)
     
     # Duration selection
-    duration_weeks = st.slider(
-        "Study plan duration (weeks)",
-        min_value=1,
-        max_value=24,
-        value=8,
-        step=1
-    )
+    with left_col:
+        with st.container(border=True):
+            duration_weeks = st.slider("Study plan duration (weeks)",
+                                       min_value=1,
+                                       max_value=24,
+                                       value=8,
+                                       step=1)
+        # Learning goals
+        goals = st.text_area("What are your learning goals or objectives?",
+                         height=100,
+                         help="What do you want to achieve by the end of this study plan?")
     
     # Experience level selection
-    experience_level = st.radio(
-        "Your experience level with this subject",
-        ["Beginner", "Intermediate", "Advanced"]
-    )
+    with right_col:
+        with st.container(border=True):
+            experience_level = st.radio("Your experience level with this subject",
+                                    ["Beginner", "Intermediate", "Advanced"])
+        model_choice = st.selectbox("Select model for analysis",
+            options=["llama3-70b-8192","llama-3.3-70b-versatile", "gemma2-9b-it","deepseek-r1-distill-llama-70b"],
+            index=0)
     
-    # Learning goals
-    goals = st.text_area(
-        "What are your learning goals or objectives?",
-        height=100,
-        help="What do you want to achieve by the end of this study plan?"
-    )
+    
     
     # Display chat history
     display_chat_messages()
@@ -112,7 +116,7 @@ def study_assistant():
         
         # Process with groq
         with st.spinner(f"Generating {duration_weeks}-week study plan for {subject}..."):
-            response, source = generate_study_plan(subject, duration_weeks, experience_level, goals)
+            response, source = generate_study_plan(subject,model_choice, duration_weeks, experience_level, goals)
         
         # Add assistant response to chat history
         st.session_state.study_messages.append({"role": "assistant", "content": response, "source": source})
@@ -143,7 +147,7 @@ def study_assistant():
             # Process with groq
             llm = ChatGroq(
                 api_key=GROQ_API_KEY,
-                model_name=STUDY_MODEL,
+                model_name=model_choice,
                 temperature=STUDY_TEMP,
             )
             

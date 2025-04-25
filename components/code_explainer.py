@@ -20,12 +20,12 @@ def format_code(code, language):
         # Fall back to markdown formatting if specific lexer is not found
         return markdown.markdown(f"```{language}\n{code}\n```")
 
-def explain_code(code, language, explanation_type):
+def explain_code(code, model, language, explanation_type):
     """Generate code explanation using Groq"""
     try:
         llm = ChatGroq(
             api_key=GROQ_API_KEY,
-            model_name=CODE_MODEL,
+            model_name=model,
             temperature=CODE_TEMP,
         )
         
@@ -123,13 +123,13 @@ def display_chat_messages():
 def code_assistant():
     """Main code explanation assistant"""
     with st.expander("About", expanded=False):
-        st.header("Code Explainer & Problem Solver")
+        st.header("Code Explainer & Problem Solver </>👨🏻‍💻💻 </>")
         st.markdown("""
         Paste your code or coding problems to get:
-        - Line-by-line explanations
-        - Error identification and fixes
-        - Code optimization suggestions
-        - Solutions to coding problems
+        - :red[Line-by-line explanations]
+        - :red[Error identification and fixes]
+        - :red[Code optimization suggestions]
+        - :red[Solutions to coding problems]
         """)
     
     # Language selection
@@ -142,6 +142,10 @@ def code_assistant():
     
         if language == "other":
             language = st.text_input("Specify language")
+        
+        model_choice = st.selectbox("Select model for analysis",
+            options=["llama3-70b-8192","llama-3.3-70b-versatile", "gemma2-9b-it","deepseek-r1-distill-llama-70b"],
+            index=0)
     
     # Explanation type selection
     with left_col:
@@ -173,7 +177,7 @@ def code_assistant():
         
         # Process with groq
         with st.spinner("Analyzing code..."):
-            response, source = explain_code(code_input, language, explanation_type)
+            response, source = explain_code(code_input,model_choice, language, explanation_type)
         
         # Add assistant response to chat history
         st.session_state.code_messages.append({"role": "assistant", "content": response, "source": source})
@@ -193,7 +197,7 @@ def code_assistant():
         # Process with groq
         llm = ChatGroq(
             api_key=GROQ_API_KEY,
-            model_name=CODE_MODEL,
+            model_name=model_choice,
             temperature=CODE_TEMP,
         )
         

@@ -4,12 +4,12 @@ from langchain.prompts import ChatPromptTemplate
 from langchain.chains import LLMChain
 from config import GROQ_API_KEY, ARTICLE_MODEL, ARTICLE_DEFAULT_TEMP, DEFAULT_SOURCE_ATTRIBUTION
 
-def generate_article(topic, word_count, temperature, style):
+def generate_article(topic,model, word_count, temperature, style):
     """Generate an article using Groq"""
     try:
         llm = ChatGroq(
             api_key=GROQ_API_KEY,
-            model_name=ARTICLE_MODEL,
+            model_name=model,
             temperature=temperature,
         )
         
@@ -55,48 +55,55 @@ def display_chat_messages():
 def article_assistant():
     """Main article generation assistant"""
     with st.expander("About", expanded=False):
-        st.header("Article Generator")
+        st.header("Article Generator 📝")
         st.markdown("""
         Generate well-researched articles on any topic:
-        - Control word count and creativity level
-        - Choose different writing styles
-        - Get properly formatted content ready for publishing
+        - :red[Control word count and creativity level]
+        - :red[Choose different writing styles]
+        - :red[Get properly formatted content ready for publishing]
         """)
     
     # Topic input
     topic = st.text_input("Enter article topic", help="Be specific for better results")
-    
+
+    left_col, right_col = st.columns(2)
+    with left_col:
+        with st.container(border=True):
+        # Writing style selection
+            style = st.selectbox("Select writing style",["Academic", 
+                                                     "Conversational", 
+                                                     "Professional", 
+                                                     "Technical", 
+                                                     "Educational",
+                                                     "Journalistic",
+                                                     "Narrative"],index=0)
+        with st.container(border=True):
+            # Temperature slider
+            temperature = st.slider(
+                "Creativity level (temperature)",
+                min_value=0.1,
+                max_value=1.0,
+                value=ARTICLE_DEFAULT_TEMP,
+                step=0.1,
+                help="Lower values produce more factual content, higher values more creative content"
+            )
+            
+        
+            
+    with right_col:
+        with st.container(border=True):
+            model_choice = st.selectbox("Select model for analysis",options=["llama3-70b-8192",
+                                                                         "llama-3.3-70b-versatile",
+                                                                           "gemma2-9b-it",
+                                                                           "deepseek-r1-distill-llama-70b"],index=0)
+        with st.container(border=True):
     # Word count selection
-    word_count = st.select_slider(
-        "Select approximate word count",
-        options=[250, 500, 750, 1000, 1500, 2000, 3000],
-        value=1000
-    )
-    
-    # Writing style selection
-    style = st.selectbox(
-        "Select writing style",
-        [
-            "Academic", 
-            "Conversational", 
-            "Professional", 
-            "Technical", 
-            "Educational",
-            "Journalistic",
-            "Narrative"
-        ],
-        index=1
-    )
-    
-    # Temperature slider
-    temperature = st.slider(
-        "Creativity level (temperature)",
-        min_value=0.1,
-        max_value=1.0,
-        value=ARTICLE_DEFAULT_TEMP,
-        step=0.1,
-        help="Lower values produce more factual content, higher values more creative content"
-    )
+            word_count = st.select_slider("Select approximate word count",
+                                          options=[250, 500, 750, 1000, 1500, 2000, 3000],
+                                          value=1000)
+        
+            
+
     
     # Temperature explanation
     st.caption(
@@ -119,7 +126,7 @@ def article_assistant():
         
         # Process with groq
         with st.spinner(f"Generating a {word_count}-word article about {topic}..."):
-            response, source = generate_article(topic, word_count, temperature, style)
+            response, source = generate_article(topic,model_choice, word_count, temperature, style)
         
         # Add assistant response to chat history
         st.session_state.article_messages.append({"role": "assistant", "content": response, "source": source})
@@ -152,7 +159,7 @@ def article_assistant():
             # Process with groq
             llm = ChatGroq(
                 api_key=GROQ_API_KEY,
-                model_name=ARTICLE_MODEL,
+                model_name=model_choice,
                 temperature=temperature,
             )
             
