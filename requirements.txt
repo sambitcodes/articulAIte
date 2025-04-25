@@ -9,5 +9,5 @@ markdown
 pygments
 numpy
 langchain-community
-tavily-python==0.2.2
-google-search-results
+# tavily-python
+# google-search-results
