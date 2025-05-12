@@ -28,6 +28,8 @@ A comprehensive Streamlit-based web application that uses LangChain and Groq to 
 - Find recommended resources and materials
 - Receive time estimates and progress tracking metrics
 
+- App Link - https://articulaite.onrender.com/
+
 ## Setup Instructions
 
 1. Clone this repository

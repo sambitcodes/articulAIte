@@ -9,5 +9,6 @@ markdown
 pygments
 numpy
 langchain-community
-# tavily-python
-# google-search-results
+tavily-python
+sentence-transformers
+
