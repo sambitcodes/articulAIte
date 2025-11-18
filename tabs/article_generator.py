@@ -60,7 +60,7 @@ def article_generator_tab():
             word_count = st.slider("Target Word Count",min_value=ARTICLE_MIN_WORDS, max_value=ARTICLE_MAX_WORDS,
                 value=ARTICLE_DEFAULT_WORDS,step=100,key="article_word_count")
             temperature = st.slider("Creativity Level",min_value=0.0,max_value=1.0,
-                value=0.7,step=0.1,key="article_temperature")
+                value=0.3,step=0.1,key="article_temperature")
             
 
     # Additional Options
