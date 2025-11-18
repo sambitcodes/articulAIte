@@ -4,7 +4,7 @@ Article Generator Tab
 
 import streamlit as st
 from langchain_groq import ChatGroq
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from utils.chat_history import initialize_chat_history, add_message, display_chat_history, format_chat_history_for_llm
 from config import ARTICLE_GENERATOR_MODELS, SYSTEM_PROMPTS, WRITING_STYLES, ARTICLE_MAX_WORDS, ARTICLE_MIN_WORDS, ARTICLE_DEFAULT_WORDS
 import os

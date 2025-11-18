@@ -4,7 +4,7 @@ Code Explainer & Problem Solver Tab
 
 import streamlit as st
 from langchain_groq import ChatGroq
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from utils.chat_history import initialize_chat_history, add_message, display_chat_history, format_chat_history_for_llm
 from config import CODE_EXPLAINER_MODELS, DEFAULT_CODE_MODEL, SYSTEM_PROMPTS
 import os

@@ -4,7 +4,7 @@ Study Plan Generator Tab
 
 import streamlit as st
 from langchain_groq import ChatGroq
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from utils.chat_history import initialize_chat_history, add_message, display_chat_history, format_chat_history_for_llm
 from config import STUDY_PLAN_MODELS, SYSTEM_PROMPTS, STUDY_MIN_WEEKS, STUDY_MAX_WEEKS
 import os
