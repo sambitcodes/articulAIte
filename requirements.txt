@@ -1,0 +1,11 @@
+streamlit
+langchain
+langchain-groq
+python-dotenv
+requests
+PyPDF2
+python-docx
+reportlab
+weasyprint 
+markdown 
+mammoth 
