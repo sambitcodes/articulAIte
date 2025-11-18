@@ -4,7 +4,7 @@ CV Analysis & Interview Preparation Tab
 
 import streamlit as st
 from langchain_groq import ChatGroq
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from utils.file_handler import validate_file, extract_text_from_file
 from utils.chat_history import initialize_chat_history, add_message, display_chat_history, get_chat_history, format_chat_history_for_llm
 from config import CV_INTERVIEW_MODELS, DEFAULT_CV_MODEL, SYSTEM_PROMPTS
