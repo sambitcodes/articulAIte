@@ -85,25 +85,25 @@ def main():
         st.stop()
     
     # Sidebar
-    st.sidebar.title("📋 Navigation")
-    st.sidebar.markdown("---")
+    # st.sidebar.title("📋 Navigation")
+    # st.sidebar.markdown("---")
     
-    st.sidebar.markdown("""
-    ### About articulAIte
+    # st.sidebar.markdown("""
+    # ### About articulAIte
     
-    An AI-powered assistant leveraging LangChain and Groq to help you:
-    - 📄 Prepare for interviews
-    - 💻 Solve coding problems
-    - 📝 Generate content
-    - 📚 Create study plans
+    # An AI-powered assistant leveraging LangChain and Groq to help you:
+    # - 📄 Prepare for interviews
+    # - 💻 Solve coding problems
+    # - 📝 Generate content
+    # - 📚 Create study plans
     
-    **Chat with AI** in each tab!
-    """)
+    # **Chat with AI** in each tab!
+    # """)
     
-    st.sidebar.markdown("---")
-    st.sidebar.markdown(
-        "**Powered by:** Groq API | **Built with:** Streamlit & LangChain"
-    )
+    # st.sidebar.markdown("---")
+    # st.sidebar.markdown(
+    #     "**Powered by:** Groq API | **Built with:** Streamlit & LangChain"
+    # )
     
     # Tabs
     tab1, tab2, tab3, tab4 = st.tabs([
@@ -124,6 +124,28 @@ def main():
     
     with tab4:
         study_plan_tab()
+
+    st.markdown("---")
+    st.markdown("""
+    <div style='padding:20px 0 0 0; color:#358; font-size: 1.04em; text-align: center;'>
+    <h5 style='text-align: center;'>Empower Your Love for learning with AI</h4>
+    <p style='text-align: center;'>
+    Powered by <b>Groq API</b>  &nbsp;&nbsp; | &nbsp;&nbsp; Built with ❤️ using <b>LangChain</b> 
+    </p>
+    <a href="https://github.com/sambitcodes" target="_blank" style="text-decoration:none;">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" 
+        style="vertical-align:middle; margin-bottom: 3px;" height="22" />
+      <span style="font-size:1em; margin-left:6px; vertical-align:middle; text-align: center;">sambitcodes ©</span>
+    </a>
+    """, unsafe_allow_html=True)
+    # <h6 style='text-align: center;'>An AI-powered assistant leveraging <b>LangChain</b> and <b>Groq</b> to help you:</h5>
+    # <ul style='text-align: center;'>
+    #  📄 <b>Prepare for interviews</b>
+    #  💻 <b>Solve coding problems</b>
+    #  📝 <b>Generate content</b>
+    #  📚 <b>Create study plans</b>
+    #  💬 <b>Chat with AI in each tab!</b>
+    # </ul>
 
 if __name__ == "__main__":
     main()
