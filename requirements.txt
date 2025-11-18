@@ -1,12 +1,8 @@
-streamlit
+streamlit>=1.26.0
 langchain>=0.2.0
-langchain-community
-langchain-groq
+langchain-groq>=1.0.1
 python-dotenv
 requests
 PyPDF2
 python-docx
-reportlab
-weasyprint 
-markdown 
-mammoth 
+markdown
