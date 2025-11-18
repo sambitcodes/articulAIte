@@ -65,7 +65,7 @@ def study_plan_tab():
                 value=2.0,step=0.5,key="study_daily_hours")
 
                 temperature = st.slider("Temperature",min_value=0.0,max_value=1.0,
-                value=0.6,step=0.1,key="study_temperature")
+                value=0.2,step=0.1,key="study_temperature")
 
     with st.expander("⚠️🚫 Temperature Guidance ", expanded=False):
         st.markdown(
