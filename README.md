@@ -1,4 +1,4 @@
-# articulAIte - AI-Powered Career Development Assistant
+# articulAIte - AI-Powered Assistant
 
 An advanced Streamlit-based web application that leverages LangChain and Groq API to provide comprehensive career development assistance across four specialized domains.
 
@@ -12,11 +12,11 @@ An advanced Streamlit-based web application that leverages LangChain and Groq AP
 - **Chat-enabled** for deep-dive discussions with career coach
 
 **Supported Models:**
-- Qwen3-32B (Default)
+- Groq Compound (Default - for company-specific web research)
 - OpenAI GPT-OSS-120B
 - Llama 3.3 70B
 - Kimi K2 Instruct
-- Groq Compound (for company-specific web research)
+- Groq Compound Mini (latency-optimized version)
 
 ### 💻 Tab 2: Code Explainer & Problem Solver
 - **Line-by-line code explanations** for any programming language
@@ -26,11 +26,11 @@ An advanced Streamlit-based web application that leverages LangChain and Groq AP
 - **Interactive chat** for technical discussions
 
 **Supported Models:**
-- Qwen3-32B (Default)
+- Groq Compound (Default - for code execution and iterative debugging)
 - OpenAI GPT-OSS-120B
 - Llama 4 Maverick 17B
 - Kimi K2 Instruct
-- Groq Compound (for code execution and iterative debugging)
+- Groq Compound Mini (latency-optimized version)
 
 ### 📝 Tab 3: Article Generator
 - **Create well-researched articles** on any topic
@@ -41,6 +41,7 @@ An advanced Streamlit-based web application that leverages LangChain and Groq AP
 
 **Supported Models:**
 - Groq Compound (Default - with web search and synthesis)
+- Groq Compound Mini (latency-optimized version)
 - OpenAI GPT-OSS-120B
 - Llama 3.3 70B
 - Kimi K2 Instruct
@@ -53,9 +54,9 @@ An advanced Streamlit-based web application that leverages LangChain and Groq AP
 - **Chat with study mentor** for customization
 
 **Supported Models:**
-- Qwen3-32B
+- Groq Compound Mini (Default - for latency-sensitive tasks)
 - OpenAI GPT-OSS-120B
-- Llama 3.3 70B (Default)
+- Llama 3.3 70B 
 - Kimi K2 Instruct
 
 ## 🚀 Quick Start
@@ -242,10 +243,12 @@ The app uses the following Groq models:
 
 | Model | Use Case | Speed | Quality |
 |-------|----------|-------|---------|
-| Qwen3-32B | General purpose | ⚡⚡⚡ | ⭐⭐⭐⭐ |
-| Llama 3.3 70B | Advanced reasoning | ⚡⚡ | ⭐⭐⭐⭐⭐ |
-| GPT-OSS-120B | Complex tasks | ⚡ | ⭐⭐⭐⭐⭐ |
 | Groq Compound | Web search + code | ⚡ | ⭐⭐⭐⭐⭐ |
+| Groq Compound Mini | Latency-optimized | ⚡⚡ | ⭐⭐⭐⭐⭐ |
+| Llama 3.3 70B | Advanced reasoning | ⚡⚡ | ⭐⭐⭐⭐ |
+| Llama 4 Maverick 17B | Complex reasoning | ⚡⚡ | ⭐⭐⭐⭐ |
+| GPT-OSS-120B | Complex tasks | ⚡ | ⭐⭐⭐⭐ |
+| Kimi K2 Instruct | Natural language | ⚡ | ⭐⭐⭐⭐⭐ |
 
 ### Rate Limiting
 - Standard Groq API rate limits apply
@@ -295,9 +298,6 @@ Contributions are welcome! Please:
 3. Make your changes
 4. Submit a pull request
 
-## 📝 License
-
-MIT License - see LICENSE file for details
 
 ## 🆘 Support
 
@@ -321,12 +321,11 @@ Potential features for future versions:
 ## 📞 Contact
 
 For questions or suggestions:
-- Email: your.email@example.com
-- Twitter: @yourhandle
-- GitHub: @yourusername
+- Email: sambitmaths123@gmail.com
+- GitHub: @sambitcodes
 
 ---
 
-**articulAIte** - Empower Your Career with AI 🚀
+**articulAIte** - Empower Your Love for learningwith AI 🚀
 
 Made with ❤️ using Streamlit, LangChain, and Groq
